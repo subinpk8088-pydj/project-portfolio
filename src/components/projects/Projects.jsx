@@ -1,4 +1,5 @@
 import projects from "../../data/projects";
+import "./projects.css";
 
 function Projects() {
   return (
@@ -17,36 +18,55 @@ function Projects() {
       {projects.map((project, index) => (
         <div
           key={project.id}
+          className="project-container"
           style={{
             ...styles.projectContainer,
             flexDirection: index % 2 === 0 ? "row" : "row-reverse",
           }}
         >
-          <div style={styles.imageWrapper}>
+          <div
+            style={styles.imageWrapper}
+            className="project-image-wrapper"
+          >
             <img
               src={project.image}
               alt={project.title}
               style={styles.image}
+              className="project-image"
             />
           </div>
 
           <div style={styles.content}>
-            <p style={styles.category}>{project.category}</p>
+            <p style={styles.category}>
+              {project.category}
+            </p>
 
-            <h3 style={styles.projectTitle}>{project.title}</h3>
+            <h3 style={styles.projectTitle}>
+              {project.title}
+            </h3>
 
-            <p style={styles.description}>{project.description}</p>
+            <p style={styles.description}>
+              {project.description}
+            </p>
 
             <p style={styles.tech}>
               <strong>Technologies:</strong> {project.tech}
             </p>
 
             <div style={styles.buttons}>
-              <a href={project.live} style={styles.liveBtn}>
+              <a
+                href={project.live}
+                style={styles.liveBtn}
+                className="project-btn"
+              >
                 Live Preview
               </a>
 
-              <a href={project.github} style={styles.githubBtn}>
+              <a
+                href={project.github}
+                style={styles.githubBtn}
+                className="project-btn"
+              >
                 GitHub
               </a>
             </div>
@@ -92,17 +112,25 @@ const styles = {
     gap: "60px",
     marginBottom: "120px",
     flexWrap: "wrap",
+
+    transition:
+      "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
   },
 
   imageWrapper: {
     flex: 1,
     minWidth: "300px",
+    overflow: "hidden",
+    borderRadius: "20px",
   },
 
   image: {
     width: "100%",
     borderRadius: "20px",
     boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+
+    transition:
+      "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
   },
 
   content: {
@@ -135,6 +163,7 @@ const styles = {
   buttons: {
     display: "flex",
     gap: "15px",
+    flexWrap: "wrap",
   },
 
   liveBtn: {
@@ -142,7 +171,9 @@ const styles = {
     background: "black",
     color: "white",
     textDecoration: "none",
-    borderRadius: "6px",
+    borderRadius: "8px",
+
+    transition: "all 0.3s ease",
   },
 
   githubBtn: {
@@ -150,7 +181,9 @@ const styles = {
     border: "1px solid black",
     color: "black",
     textDecoration: "none",
-    borderRadius: "6px",
+    borderRadius: "8px",
+
+    transition: "all 0.3s ease",
   },
 };
 

@@ -2,17 +2,19 @@ import "./projects.css";
 
 function ProjectCard({ project }) {
   return (
-    <div style={styles.card} className="project-card">
+    <div className="project-card" style={styles.card}>
+      
       <div className="project-image-wrapper">
         <img
           src={project.image}
           alt={project.title}
-          style={styles.image}
           className="project-image"
+          style={styles.image}
         />
       </div>
 
       <div style={styles.content}>
+
         <p style={styles.category}>
           {project.category}
         </p>
@@ -32,20 +34,21 @@ function ProjectCard({ project }) {
         <div style={styles.buttons}>
           <a
             href={project.live}
-            style={styles.primaryBtn}
             className="project-button"
+            style={styles.primaryBtn}
           >
             Live Demo
           </a>
 
           <a
             href={project.github}
-            style={styles.secondaryBtn}
             className="project-button"
+            style={styles.secondaryBtn}
           >
             GitHub
           </a>
         </div>
+
       </div>
     </div>
   );
@@ -54,9 +57,7 @@ function ProjectCard({ project }) {
 const styles = {
   card: {
     background: "white",
-
     borderRadius: "24px",
-
     overflow: "hidden",
 
     boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
