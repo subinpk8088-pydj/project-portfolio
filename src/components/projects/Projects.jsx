@@ -1,9 +1,17 @@
+import { motion } from "framer-motion";
 import projects from "../../data/projects";
 import "./projects.css";
 
 function Projects() {
   return (
-    <section id="projects" style={styles.section}>
+    <motion.section
+      id="projects"
+      style={styles.section}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
       <div style={styles.header}>
         <p style={styles.small}>MY WORK</p>
 
@@ -16,12 +24,20 @@ function Projects() {
       </div>
 
       {projects.map((project, index) => (
-        <div
+        <motion.div
           key={project.id}
           className="project-container"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: index * 0.15,
+          }}
+          viewport={{ once: true }}
           style={{
             ...styles.projectContainer,
-            flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+            flexDirection:
+              index % 2 === 0 ? "row" : "row-reverse",
           }}
         >
           <div
@@ -71,9 +87,9 @@ function Projects() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
-    </section>
+    </motion.section>
   );
 }
 
@@ -112,9 +128,6 @@ const styles = {
     gap: "60px",
     marginBottom: "120px",
     flexWrap: "wrap",
-
-    transition:
-      "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
   },
 
   imageWrapper: {
@@ -128,9 +141,6 @@ const styles = {
     width: "100%",
     borderRadius: "20px",
     boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-
-    transition:
-      "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
   },
 
   content: {
@@ -172,8 +182,6 @@ const styles = {
     color: "white",
     textDecoration: "none",
     borderRadius: "8px",
-
-    transition: "all 0.3s ease",
   },
 
   githubBtn: {
@@ -182,8 +190,6 @@ const styles = {
     color: "black",
     textDecoration: "none",
     borderRadius: "8px",
-
-    transition: "all 0.3s ease",
   },
 };
 

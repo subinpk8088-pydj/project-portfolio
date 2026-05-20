@@ -1,4 +1,7 @@
+import { motion } from "framer-motion";
+
 function Skills() {
+
   const skillGroups = [
     {
       title: "Frontend",
@@ -47,7 +50,14 @@ function Skills() {
   ];
 
   return (
-    <section id="skills" style={styles.section}>
+    <motion.section
+      id="skills"
+      style={styles.section}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
       <div style={styles.header}>
         <p style={styles.smallTitle}>TECH STACK</p>
 
@@ -58,20 +68,39 @@ function Skills() {
 
       <div style={styles.grid}>
         {skillGroups.map((group, index) => (
-          <div key={index} style={styles.card}>
-            <h3 style={styles.cardTitle}>{group.title}</h3>
+          <motion.div
+            key={index}
+            style={styles.card}
+            whileHover={{
+              y: -8,
+              transition: { duration: 0.3 },
+            }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.1,
+            }}
+            viewport={{ once: true }}
+          >
+            <h3 style={styles.cardTitle}>
+              {group.title}
+            </h3>
 
             <div style={styles.skillsContainer}>
               {group.skills.map((skill, idx) => (
-                <span key={idx} style={styles.skillBadge}>
+                <span
+                  key={idx}
+                  style={styles.skillBadge}
+                >
                   {skill}
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -102,7 +131,8 @@ const styles = {
 
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gridTemplateColumns:
+      "repeat(auto-fit, minmax(280px, 1fr))",
     gap: "30px",
   },
 

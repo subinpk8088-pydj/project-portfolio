@@ -1,7 +1,22 @@
+import { motion } from "framer-motion";
+
 function Contact() {
   return (
-    <section id="contact" style={styles.section}>
-      <div style={styles.left}>
+    <motion.section
+      id="contact"
+      style={styles.section}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <motion.div
+        style={styles.left}
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+      >
         <p style={styles.smallTitle}>CONTACT</p>
 
         <h2 style={styles.heading}>
@@ -14,25 +29,55 @@ function Contact() {
         </p>
 
         <div style={styles.contactInfo}>
-          <div style={styles.infoCard}>
+          <motion.div
+            style={styles.infoCard}
+            whileHover={{
+              y: -6,
+              transition: { duration: 0.3 },
+            }}
+          >
             <h4>Email</h4>
             <p>subinsuresh8088@gmail.com</p>
-          </div>
+          </motion.div>
 
-          <div style={styles.infoCard}>
+          <motion.div
+            style={styles.infoCard}
+            whileHover={{
+              y: -6,
+              transition: { duration: 0.3 },
+            }}
+          >
             <h4>Location</h4>
             <p>Kannur, Kerala</p>
-          </div>
+          </motion.div>
 
-          <div style={styles.infoCard}>
+          <motion.div
+            style={styles.infoCard}
+            whileHover={{
+              y: -6,
+              transition: { duration: 0.3 },
+            }}
+          >
             <h4>Phone</h4>
             <p>9496313744</p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      <div style={styles.right}>
-        <form style={styles.form}>
+      <motion.div
+        style={styles.right}
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+      >
+        <motion.form
+          style={styles.form}
+          whileHover={{
+            y: -5,
+            transition: { duration: 0.3 },
+          }}
+        >
           <input
             type="text"
             placeholder="Your Name"
@@ -51,12 +96,21 @@ function Contact() {
             style={styles.textarea}
           ></textarea>
 
-          <button type="submit" style={styles.button}>
+          <motion.button
+            type="submit"
+            style={styles.button}
+            whileHover={{
+              scale: 1.03,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+          >
             Send Message
-          </button>
-        </form>
-      </div>
-    </section>
+          </motion.button>
+        </motion.form>
+      </motion.div>
+    </motion.section>
   );
 }
 
@@ -113,6 +167,10 @@ const styles = {
     padding: "25px",
     borderRadius: "18px",
     border: "1px solid rgba(255,255,255,0.08)",
+
+    backdropFilter: "blur(12px)",
+
+    transition: "all 0.3s ease",
   },
 
   form: {
@@ -124,6 +182,8 @@ const styles = {
     flexDirection: "column",
     gap: "20px",
     backdropFilter: "blur(14px)",
+
+    boxShadow: "0 10px 40px rgba(0,0,0,0.2)",
   },
 
   input: {
@@ -134,6 +194,8 @@ const styles = {
     color: "white",
     fontSize: "1rem",
     outline: "none",
+
+    transition: "all 0.3s ease",
   },
 
   textarea: {
@@ -145,6 +207,8 @@ const styles = {
     fontSize: "1rem",
     outline: "none",
     resize: "none",
+
+    transition: "all 0.3s ease",
   },
 
   button: {
@@ -156,6 +220,8 @@ const styles = {
     fontWeight: "700",
     fontSize: "1rem",
     cursor: "pointer",
+
+    transition: "all 0.3s ease",
   },
 };
 
