@@ -1,0 +1,33 @@
+.project-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.18);
+}
+
+.project-image-wrapper {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.project-image {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.08);
+}
+
+.project-button {
+  transition: all 0.3s ease;
+}
+
+.project-button:hover {
+  transform: translateY(-2px);
+}

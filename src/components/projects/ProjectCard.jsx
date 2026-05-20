@@ -1,26 +1,51 @@
-function ProjectCard({ title, description, tech, github, live }) {
+import "./projects.css";
+
+function ProjectCard({ project }) {
   return (
-    <div style={styles.card}>
-      <h3 style={styles.title}>{title}</h3>
-
-      <p style={styles.desc}>{description}</p>
-
-      <div style={styles.tech}>
-        {tech.map((item, index) => (
-          <span key={index} style={styles.techItem}>
-            {item}
-          </span>
-        ))}
+    <div style={styles.card} className="project-card">
+      <div className="project-image-wrapper">
+        <img
+          src={project.image}
+          alt={project.title}
+          style={styles.image}
+          className="project-image"
+        />
       </div>
 
-      <div style={styles.links}>
-        <a href={github} target="_blank" rel="noreferrer">
-          GitHub
-        </a>
+      <div style={styles.content}>
+        <p style={styles.category}>
+          {project.category}
+        </p>
 
-        <a href={live} target="_blank" rel="noreferrer">
-          Live
-        </a>
+        <h3 style={styles.title}>
+          {project.title}
+        </h3>
+
+        <p style={styles.description}>
+          {project.description}
+        </p>
+
+        <p style={styles.tech}>
+          {project.tech}
+        </p>
+
+        <div style={styles.buttons}>
+          <a
+            href={project.live}
+            style={styles.primaryBtn}
+            className="project-button"
+          >
+            Live Demo
+          </a>
+
+          <a
+            href={project.github}
+            style={styles.secondaryBtn}
+            className="project-button"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -28,36 +53,79 @@ function ProjectCard({ title, description, tech, github, live }) {
 
 const styles = {
   card: {
-    background: "#1e1e1e",
-    color: "white",
-    padding: "20px",
-    borderRadius: "10px",
-    width: "300px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+    background: "white",
+
+    borderRadius: "24px",
+
+    overflow: "hidden",
+
+    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+
+    display: "flex",
+    flexDirection: "column",
+
+    height: "100%",
   },
+
+  image: {
+    width: "100%",
+    height: "260px",
+    objectFit: "cover",
+  },
+
+  content: {
+    padding: "30px",
+  },
+
+  category: {
+    fontSize: "0.85rem",
+    textTransform: "uppercase",
+    letterSpacing: "2px",
+    color: "#777",
+    marginBottom: "14px",
+  },
+
   title: {
-    marginBottom: "10px",
+    fontSize: "1.5rem",
+    marginBottom: "18px",
+    color: "#111",
   },
-  desc: {
-    fontSize: "14px",
-    opacity: 0.8,
+
+  description: {
+    color: "#555",
+    lineHeight: "1.8",
+    marginBottom: "22px",
   },
+
   tech: {
+    color: "#111",
+    fontWeight: "600",
+    lineHeight: "1.7",
+    marginBottom: "28px",
+  },
+
+  buttons: {
     display: "flex",
+    gap: "14px",
     flexWrap: "wrap",
-    gap: "5px",
-    margin: "10px 0",
   },
-  techItem: {
-    background: "#333",
-    padding: "5px 8px",
-    borderRadius: "5px",
-    fontSize: "12px",
+
+  primaryBtn: {
+    padding: "12px 20px",
+    background: "#111",
+    color: "white",
+    textDecoration: "none",
+    borderRadius: "10px",
+    fontWeight: "600",
   },
-  links: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "10px",
+
+  secondaryBtn: {
+    padding: "12px 20px",
+    border: "1px solid #ddd",
+    color: "#111",
+    textDecoration: "none",
+    borderRadius: "10px",
+    fontWeight: "600",
   },
 };
 
