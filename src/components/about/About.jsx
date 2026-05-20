@@ -1,6 +1,15 @@
+import { motion } from "framer-motion";
+
 function About() {
   return (
-    <section id="about" style={styles.section}>
+    <motion.section
+      id="about"
+      style={styles.section}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
       <div style={styles.left}>
         <p style={styles.smallTitle}>ABOUT</p>
 
@@ -62,7 +71,7 @@ function About() {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -122,7 +131,7 @@ const styles = {
     background: "#f5f5f5",
     padding: "25px",
     borderRadius: "16px",
-    minWidth: "160px",
+  minWidth: "160px",
   },
 
   statNumber: {
